@@ -46,6 +46,7 @@ With that done, compare the difference between current user's scores against tho
 
 
 Example: 
+var user1 = friendsArray.scores;
 
 
 User 1: [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]

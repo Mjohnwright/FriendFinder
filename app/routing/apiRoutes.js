@@ -23,3 +23,8 @@ module.exports = function(app) {
   });
 
 }
+
+//POST ROUTE LOGIC:
+
+var user1 = friendsData.scores;
+// console.log("apiROutes = " + user1);
