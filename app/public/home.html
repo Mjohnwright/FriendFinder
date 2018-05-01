@@ -48,11 +48,33 @@
         <footer class="footer">
             <div class="container">
                 <p>
-                    <a href="/api/friends">API Friends List</a> |
+                    <a href="/api/friends">API Friends List</a> | <a href="#" id="clear">Clear Friends List | </a>
                     <a href="https://github.com/afhaque/friendfinder">GitHub Repo</a>
                 </p>
             </div>
         </footer>
 
     </div>
+    <script type="text/javascript">
+
+
+    // This function resets all of the data in our tables. This is intended to let you restart a demo.
+    function clearTable() {
+
+      var currentURL = window.location.origin;
+      $.ajax({ url: currentURL + "/api/clear", method: "POST" });
+
+    }
+
+    $("#clear").on("click", function() {
+      alert("Clearing...");
+      clearTable();
+
+      // Refresh the page after data is cleared
+      location.reload();
+
+    });
+    </script>
+
+
 </body>

@@ -229,30 +229,62 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
-          console.log("ready");
+      console.log("ready");
 
-          $("#submit").click(function (event) {
-              event.preventDefault();
-              console.log("Submit button is working");
+      $("#submit").click(function (event) {
+        event.preventDefault();
+        console.log("Submit button is working");
 
-              var surveyResult = {
-                quest1: $("#q1").val(),
-                quest2: $("#q2").val(),
-                quest3: $("#q3").val(),
-                quest4: $("#q4").val(),
-                quest5: $("#q5").val(),
-                quest6: $("#q6").val(),
-                quest7: $("#q7").val(),
-                quest8: $("#q8").val(),
-                quest9: $("#q9").val(),
-                quest10: $("#q10").val(),
+        // <!--NEEDS TO BE A CONSTRUCTOR........THIS SURVEYRESULT  -->
+        var Profile = function (surveyResults) {
+          this.quest1 = surveyResults[0];
+          this.quest2 = surveyResults[1];
+          this.quest3 = surveyResults[2];
+          this.quest4 = surveyResults[3];
+          this.quest5 = surveyResults[4];
+          this.quest6 = surveyResults[5];
+          this.quest7 = surveyResults[6];
+          this.quest8 = surveyResults[7];
+          this.quest8 = surveyResults[8];
+          this.quest9 = surveyResults[9];
+          this.quest10 = surveyResults[10];
+          this.name = surveyResults[11];
+          this.photo = surveyResults[12];
+          this.compare = function (user) {
+            if (user.age > this.age) {
+              console.log("hello");
+            }
+          }
+        }
+        var newS = [
+          name = $("#name").val().trim(),
+          photo = $("#photo").val().trim(),
+          quest1 = $("#q1").val(),
+          quest2 = $("#q2").val(),
+          quest3 = $("#q3").val(),
+          quest4 = $("#q4").val(),
+          quest5 = $("#q5").val(),
+          quest6 = $("#q6").val(),
+          quest7 = $("#q7").val(),
+          quest8 = $("#q8").val(),
+          quest9 = $("#q9").val(),
+          quest10 = $("#q10").val(),
+          
+        ];
 
-              }
-                console.log(surveyResult);
+        // var UserProfile = $("#name").val().trim();
 
-              
-              });
-          })
+        var UserProfile = new Profile(surveyResults);
+        console.log("User Profile name = " + UserProfile);
+        console.log("SurveyResults = " + surveyResults);
+        profile = (JSON.stringify(Profile));
+        console.log("Profile = " + profile);
+
+
+
+
+      });
+    })
   </script>
 
 
