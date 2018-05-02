@@ -28,24 +28,24 @@ module.exports = function(app) {
     // Assign the user survey to a variable
 		var newSurveyInput = req.body;
     console.log('userInput = ' + JSON.stringify(newSurveyInput));
-
+ 
     var userScores = newSurveyInput.scores;
 		console.log('userScores = ' + userScores);
     
-    	// Iterate through each instance of User
+  // Iterate through each instance of User Responses
 		for (var i = 0; i < friendsArray.length; i++) {
-      console.log('friend = ' + JSON.stringify(friendsArray[i]));  // each object is dispayed in entirety.
-      
+      console.log('friendArray = ' + JSON.stringify(friendsArray[i]));  // each object is dispayed in entirerty as string.
+        
+      // Iterate through each instance of User Response Scores
+        var friendsArrayScore = friendsArray[i];
+        for (var x = 0; i < friendsArrayScore[x].length; x++) {
+        console.log('scores = ' + JSON.stringify(friendsArray.scores[x]));  // each object is dispayed in entirerty as string.
 
-  
+      }
+    }
   
     //pushes the data into friendsData.js ('friendsArray')
-    friendsData.push(UserInput);
-
-  
-  
-  });
-
+    friendsData.push(UserInput);});
 }
 
 
