@@ -36,7 +36,7 @@ function evaluate(array, array2) {
   
 // Iterate through each instance of User Response Scores
       // var friendsArrayScore = friendsArray[i];
-
+  var lowestFriend = [];
 // Iterate through each instance of User Responses
   for (var i = 0; i < friendsArray.length; i++) {
     console.log('friendsArray = ' + JSON.stringify(friendsArray[i]));  // each object is dispayed in entirerty as string.
@@ -48,6 +48,9 @@ function evaluate(array, array2) {
   
       var dif = (friendsArray[i].surveyScores[y]) - (newUserArray[0].surveyScores[y]);
       dif = Math.abs(dif);
+      if (lowestFriend[1] > dif) {
+        lowestFriend = [friendsArray[i], dif];
+      }
 
         console.log("**************************************")
         console.log("friendsArray = " + friendsArray[i].surveyScores[y]);
@@ -55,6 +58,7 @@ function evaluate(array, array2) {
         console.log("**************************************")
         console.log("difference   = " + dif);
         console.log("                                       ")
+        
 
     }
   }
