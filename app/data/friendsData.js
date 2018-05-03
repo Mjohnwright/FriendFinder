@@ -31,36 +31,33 @@ var newUserArray = [
 
 function evaluate(array, array2) {
   console.log("this is running");
-  // var userScores = newSurveyInput.scores;
-  // console.log('userScores = ' + userScores); //I WILL ACTIVATE THIS ONVE JS IS RUNNING
-  
-// Iterate through each instance of User Response Scores
-      // var friendsArrayScore = friendsArray[i];
-  var lowestFriend = [];
-// Iterate through each instance of User Responses
+
+var bestMatch = {
+  name: 'name',
+  photo: 'www.testphoto.com',
+  pointDifference: 10000000000000
+};
+
+// / Iterate through each instance of User Responses
   for (var i = 0; i < friendsArray.length; i++) {
-    console.log('friendsArray = ' + JSON.stringify(friendsArray[i]));  // each object is dispayed in entirerty as string.
-      
-      for (var y = 0; y < 10; y++) {
-      console.log(" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!45 the value of y = " + y);
-      console.log('line 45 scores = ' + JSON.stringify(friendsArray[i].surveyScores[y]));  // each object is dispLayed in entirerty as string.
-      console.log('line 46 scores = ' + JSON.stringify(newUserArray[0].surveyScores[y]));  // each object is dispLayed in entirerty as string.
-  
-      var dif = (friendsArray[i].surveyScores[y]) - (newUserArray[0].surveyScores[y]);
+    // console.log('friendsArray = ' + JSON.stringify(friendsArray[i]));  // each object is dispayed in entirerty as string.
+    
+    var comparisonArray = []; //this will be used to evaluate the lowest matched score against the new user score
+    for (var y = 0; y < 10; y++) {
+      // console.log(" !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!45 the value of y = " + y);
+      // console.log('line 45 scores = ' + JSON.stringify(friendsArray[i].surveyScores[y]));  // each object is dispLayed in entirerty as string.
+      // console.log('line 46 scores = ' + JSON.stringify(newUserArray[0].surveyScores[y]));  // each object is dispLayed in entirerty as string.
+      var points = 0;
+      var dif = parseInt(friendsArray[i].surveyScores[y]) - parseInt(newUserArray[0].surveyScores[y]);//removes the string from integer
       dif = Math.abs(dif);
-      if (lowestFriend[1] > dif) {
-        lowestFriend = [friendsArray[i], dif];
-      }
-
-        console.log("**************************************")
-        console.log("friendsArray = " + friendsArray[i].surveyScores[y]);
-        console.log("UserInput    = " + newUserArray[0].surveyScores[y]);
-        console.log("**************************************")
-        console.log("difference   = " + dif);
-        console.log("                                       ")
-        
-
-    }
+      points = dif + dif; //this eliminates negative numbers..the 'Math.absolute' method
+      comparisonArray.push(dif); // pushes the difference of this one instance to an array
+      console.log("line 53 comparison array = " + comparisonArray);
+        if (dif <= bestMatch.pointDifference) {
+          bestMatch.name = friendsArray[i].name;
+          console.log("line 58!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!best match name = " + bestMatch.name);
+        }
+        }
   }
   
 

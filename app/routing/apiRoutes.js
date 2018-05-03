@@ -26,35 +26,40 @@ module.exports = function(app) {
   app.post("/api/friendsArray", function(req, res) {
 
     // Assign the user survey to a variable
-		var newSurveyInput = req.body;
+    var newSurveyInput = req.body;
+    var UserScores = req.body.surveyScores;
     console.log('userInput = ' + JSON.stringify(newSurveyInput));
- 
-    var userScores = newSurveyInput.scores;
-		console.log('userScores = ' + userScores);
-    
-  // Iterate through each instance of User Responses
-		for (var i = 0; i < friendsArray.length; i++) {
-      console.log('friendArray = ' + JSON.stringify(friendsArray[i]));  // each object is dispayed in entirerty as string.
-        
-      // Iterate through each instance of User Response Scores
-        var friendsArrayScore = friendsArray[i];
-        for (var x = 0; i < friendsArrayScore[x].length; x++) {
-        console.log('scores = ' + JSON.stringify(friendsArray.scores[x]));  // each object is dispayed in entirerty as string.
+    console.log('userSCores= ' + UserScores);
 
-      }
-    }
-  
+   
+    var bestMatch = {
+      name: 'name',
+      photo: 'www.testphoto.com',
+      pointDifference: 10000000000000
+    };
+
+    
+    // / Iterate through each instance of User Responses
+  for (var i = 0; i < friendsData.length; i++) {
+    // console.log('friendsArray = ' + JSON.stringify(friendsArray[i]));  // each object is dispayed in entirerty as string.
+    
+    var comparisonArray = []; //this will be used to evaluate the lowest matched score against the new user score
+    for (var y = 0; y < UserScores.length; y++) {
+      var points = 0;
+      var dif = parseInt(UserScores[y]) - parseInt(friendsData[i].surveyScores[y]);//removes the string from integer
+      dif = Math.abs(dif);
+      points = dif + dif; //this eliminates negative numbers..the 'Math.absolute' method
+      // comparisonArray.push(dif); // pushes the difference of this one instance to an array
+      // console.log("line 53 comparison array = " + comparisonArray);
+        if (dif <= bestMatch.pointDifference) {
+          bestMatch.name = friendsData[i].name;
+          console.log("line 58!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!best match name = " + bestMatch.name);
+        }
+        }
+  }
+
+
     //pushes the data into friendsData.js ('friendsArray')
-    friendsData.push(UserInput);});
+    friendsData.push(newSurveyInput);});
 }
 
-
-
-
-//POST ROUTE LOGIC:
-
-var user1 = friendsData.scores;
-// console.log("apiROutes = " + user1);
-
-//return a whole number
-// Math.abs(x);
