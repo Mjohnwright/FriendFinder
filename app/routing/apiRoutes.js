@@ -58,7 +58,7 @@ module.exports = function(app) {
     }
 
     //pushes the data into friendsData.js ('friendsArray')
-    friendsData.push(newSurveyInput);
+    // friendsData.push(newSurveyInput);
 
     friendsData.push(req.body);
     result = {bestMatchName: bestMatchName, bestMatchPhoto: bestMatchPhoto};
