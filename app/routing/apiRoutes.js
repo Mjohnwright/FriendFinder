@@ -1,3 +1,6 @@
+//API friends list is not displaying on Heroku
+
+
 // ===============================================================================
 // DEPENDENCIES
 //
@@ -56,5 +59,9 @@ module.exports = function(app) {
 
     //pushes the data into friendsData.js ('friendsArray')
     friendsData.push(newSurveyInput);
+
+    friendsData.push(req.body);
+    result = {bestMatchName: bestMatchName, bestMatchPhoto: bestMatchPhoto};
+    res.json(result);
   });
 };
